@@ -7,12 +7,12 @@ import com.logigear.test.ta_dashboard.pom.HomePage;
 import com.logigear.test.ta_dashboard.pom.LoginPage;
 import com.logigear.testfw.common.BaseTest;
 
-public class DA_LOGIN_TC004 extends BaseTest{
+public class DA_LOGIN_TC005 extends BaseTest{
 
 	@Test
-	public void TC004() {
+	public void TC005() {
 		System.out.println(
-				"TC004 - Verify that user is able to log in different repositories successfully after logging out current repository");
+				"TC005 - Verify that there is no Login dialog when switching between 2 repositories with the same account");
 		
 		String USERNAME = "administrator";
 		String PASSWORD = "";
@@ -20,14 +20,10 @@ public class DA_LOGIN_TC004 extends BaseTest{
 		
 		LoginPage loginPage = new LoginPage();
 		HomePage homePage = loginPage.loginSuccessfully(USERNAME, PASSWORD, SAMPLE_REPO);
-		homePage.selectItemFromTopMenu("administrator", "Logout");
-
-		SAMPLE_REPO = "TestRepository";
-		loginPage.loginSuccessfully(USERNAME, PASSWORD, SAMPLE_REPO);
-		
+		homePage.selectItemFromTopMenu("Repository: ", "TestRepository");
 		
 		String actualMsg = homePage.getRepoName();
 		String expectedMsg = "TestRepository";
-		Assert.assertEquals(actualMsg, expectedMsg, "Can login with correct credentials");
+		Assert.assertEquals(actualMsg, expectedMsg, "Can't switch to another repository");
 	}
 }

@@ -7,27 +7,24 @@ import com.logigear.test.ta_dashboard.pom.HomePage;
 import com.logigear.test.ta_dashboard.pom.LoginPage;
 import com.logigear.testfw.common.BaseTest;
 
-public class DA_LOGIN_TC004 extends BaseTest{
+public class DA_LOGIN_TC008 extends BaseTest{
 
 	@Test
-	public void TC004() {
+	public void TC008() {
 		System.out.println(
-				"TC004 - Verify that user is able to log in different repositories successfully after logging out current repository");
+				"TC008 - Verify that password with special characters is working correctly");
 		
 		String USERNAME = "administrator";
-		String PASSWORD = "";
-		String SAMPLE_REPO = "SampleRepository";
+		String PASSWORD = "#$%^&";
+		String SAMPLE_REPO = "TestRepository";
 		
 		LoginPage loginPage = new LoginPage();
 		HomePage homePage = loginPage.loginSuccessfully(USERNAME, PASSWORD, SAMPLE_REPO);
-		homePage.selectItemFromTopMenu("administrator", "Logout");
-
-		SAMPLE_REPO = "TestRepository";
-		loginPage.loginSuccessfully(USERNAME, PASSWORD, SAMPLE_REPO);
-		
 		
 		String actualMsg = homePage.getRepoName();
 		String expectedMsg = "TestRepository";
-		Assert.assertEquals(actualMsg, expectedMsg, "Can login with correct credentials");
+		Assert.assertEquals(actualMsg, expectedMsg, "Main page is not displayed.");
+		
+		
 	}
 }
