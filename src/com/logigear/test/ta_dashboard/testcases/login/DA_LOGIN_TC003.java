@@ -18,10 +18,10 @@ public class DA_LOGIN_TC003 extends BaseTest{
 		String PASSWORD = "abc";
 		String SAMPLE_REPO = "SampleRepository";
 		
-		LoginPage loginpage = new LoginPage();
-		loginpage = loginpage.loginFailed(USERNAME, PASSWORD, SAMPLE_REPO);
+		LoginPage loginPage = new LoginPage();
+		loginPage = loginPage.loginFailed(USERNAME, PASSWORD, SAMPLE_REPO);
 
-		String actualMsg = loginpage.getMessageOnChromePopup();
+		String actualMsg = loginPage.getMessageOnChromePopup();
 		String expectedMsg = "Username or password is invalid";
 		Assert.assertEquals(actualMsg, expectedMsg, "The messages are not the same.");
 	}
