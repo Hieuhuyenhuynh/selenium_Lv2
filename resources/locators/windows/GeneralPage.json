@@ -7,6 +7,10 @@
 		"strItem": {
 			"type": "xpath",
 			"value": "//a[text()='%s']"
+		},
+		"strNonTextMenu": {
+			"type": "xpath",
+			"value": "//li[@class='%s']"
 		}
 	}
 }

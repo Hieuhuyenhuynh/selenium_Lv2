@@ -59,4 +59,30 @@ public class GeneralPage extends BasePOM{
 		}
 	} 
 
+	
+	public void selectItemInvisibleText(String menuTitle, String itemName) {
+		try {
+			String tmp = "";
+			if (menuTitle.equals("Global Settings")) {
+				tmp = "mn-setting";
+			}
+			else if (menuTitle.equals("Choose Panels")) {
+				tmp = "mn-panels";
+			}
+			this.cbbParent = new Element(getLocator("strNonTextMenu").getBy(tmp));
+			this.cbbParent.click();
+			
+			this.cbbItem = new Element(getLocator("strItem").getBy(itemName));
+			this.cbbItem.click();
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public boolean isAvailableGlobalSetting(String itemName) {
+		this.cbbItem = new Element(getLocator("strItem").getBy(itemName));
+		return this.cbbItem.isDisplayed(10);
+		
+	}
 }

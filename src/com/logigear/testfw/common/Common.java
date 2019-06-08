@@ -5,6 +5,10 @@ public class Common {
 	public static final String URL_DRIVER_WINDOWS_CHROME = "resources/drivers/windows/chromedriver.exe";
 	public static final String URL_DRIVER_WINDOWS_FIREFOX = "resources/drivers/windows/geckodriver-x64.exe";
 	
+	public static final String USERNAME = "administrator";
+	public static final String PASSWORD = "";
+	public static final String REPOSITORY = "SampleRepository";
+	
 	public static final String CONFIG_FILE_DRIVER = "config/driver/capabilities-config.properties";
 	public static final String CONFIG_FILE_LOG = "config/log/logging.properties";
 	
