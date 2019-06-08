@@ -1,6 +1,7 @@
 package com.logigear.testfw.driver;
 
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
@@ -31,6 +32,10 @@ public class BaseDriver {
 
 	public void get(String url) {
 		_driver.get(url);
+	}
+	
+	public Set<String> getWindowHandles() {
+		return _driver.getWindowHandles();
 	}
 
 	public String getCurrentUrl() {
@@ -147,6 +152,7 @@ public class BaseDriver {
 		try {
 			LOG.info(String.format("Wait for control %s to be clickabled", locator.toString()));
 			WebDriverWait wait = new WebDriverWait(getWebDriver(), timeOutInSeconds);
+			//wait.until(ExpectedConditions.and(ExpectedConditions.presenceOfElementLocated(locator), ExpectedConditions.visibilityOfElementLocated(locator)));
 			element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		} catch (Exception error) {
 			LOG.severe(String.format("Has error with control '%s': %s", locator.toString(), error.getMessage()));

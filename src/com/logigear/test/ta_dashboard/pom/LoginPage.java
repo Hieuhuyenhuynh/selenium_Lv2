@@ -35,13 +35,37 @@ public class LoginPage extends BasePOM{
 	 * @return
 	 */
 	public HomePage login(String username, String password, String repo) {
-		cbbRepo.selectByValue(repo);
+		//cbbRepo.waitForClickable();
+		//cbbRepo.selectByValue(repo);
+		
+		txtUsername.waitForClickable();
 		txtUsername.enter(username);
+		
+		txtPassword.waitForClickable();
 		txtPassword.enter(password);
+		
+		btnLogin.waitForClickable();
 		btnLogin.click();
 		
 		return new HomePage().waitForPageDisplay();
 	}
+	
+	public LoginPage loginFailed(String username, String password, String repo) {
+		//cbbRepo.waitForClickable();
+		//cbbRepo.selectByValue(repo);
+		
+		txtUsername.waitForClickable();
+		txtUsername.enter(username);
+		
+		txtPassword.waitForClickable();
+		txtPassword.enter(password);
+		
+		btnLogin.waitForClickable();
+		btnLogin.click();
+		
+		return this;
+	}
+	
 
 	/**
 	 * 

@@ -22,6 +22,7 @@ abstract class BaseElement{
 	//protected List<WebElement> _elements = null;
 
 	private By _byLocator;
+	protected int timeOut = 30;
 
 	public BaseElement(By locator) {
 		this._byLocator = locator;
@@ -66,10 +67,18 @@ abstract class BaseElement{
 				timeOutInSeconds));
 		return TestExecutor.getInstance().getCurrentDriver().waitForDisplay(getLocator(), timeOutInSeconds);
 	}
+	
+	public WebElement waitForDisplay() {
+		return waitForDisplay(timeOut);
+	}
 
 	public WebElement waitForClickable(int timeOutInSeconds) {
 		LOG.info(String.format("Wait for control %s to be clickabled", getLocator().toString()));
 		return TestExecutor.getInstance().getCurrentDriver().waitForClickable(getLocator(), timeOutInSeconds);
+	}
+	
+	public WebElement waitForClickable() {
+		return waitForClickable(timeOut);
 	}
 //
 //	@Deprecated

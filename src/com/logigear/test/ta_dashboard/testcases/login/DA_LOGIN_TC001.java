@@ -1,4 +1,4 @@
-package com.logigear.test.ta_dashboard.testcases;
+package com.logigear.test.ta_dashboard.testcases.login;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,7 +7,7 @@ import com.logigear.test.ta_dashboard.pom.HomePage;
 import com.logigear.test.ta_dashboard.pom.LoginPage;
 import com.logigear.testfw.common.BaseTest;
 
-public class LoginTest extends BaseTest{
+public class DA_LOGIN_TC001 extends BaseTest{
 
 	@Test
 	public void TC001() {
@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest{
 		HomePage homePage = loginpage.login(USERNAME, PASSWORD, SAMPLE_REPO);
 
 		String actualMsg = homePage.getRepoName();
-		String expectedMsg = "SampleRepositoy";
+		String expectedMsg = "SampleRepository";
 		Assert.assertEquals(actualMsg, expectedMsg, "Can't login with correct credentials");
 	}
 }
