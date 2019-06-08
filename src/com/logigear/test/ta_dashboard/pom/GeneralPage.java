@@ -73,6 +73,7 @@ public class GeneralPage extends BasePOM{
 			this.cbbParent.click();
 			
 			this.cbbItem = new Element(getLocator("strItem").getBy(itemName));
+			this.cbbItem.waitForClickable();
 			this.cbbItem.click();
 			
 		} catch (Exception e) {
@@ -81,8 +82,11 @@ public class GeneralPage extends BasePOM{
 	}
 	
 	public boolean isAvailableGlobalSetting(String itemName) {
-		this.cbbItem = new Element(getLocator("strItem").getBy(itemName));
-		return this.cbbItem.isDisplayed(10);
-		
+		try {
+			this.cbbItem = new Element(getLocator("strItem").getBy(itemName));
+			return this.cbbItem.isDisplayed(1);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 }

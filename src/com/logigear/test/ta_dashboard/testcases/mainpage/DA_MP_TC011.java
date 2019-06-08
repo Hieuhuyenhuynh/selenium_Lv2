@@ -24,7 +24,7 @@ public class DA_MP_TC011 extends BaseTest{
 		homePage.selectItemInvisibleText("Global Settings", "Add Page");
 		
 		//Step 4: Try to go to Global Setting -> Add page again
-		homePage.selectItemInvisibleText("Global Settings", "Add Page");
+		//homePage.selectItemInvisibleText("Global Settings", "Add Page");
 		
 		boolean actual = homePage.isAvailableGlobalSetting("Add Page");
 		Assert.assertEquals(actual, false, "Can click on 'Add Page' button");

@@ -360,28 +360,32 @@ abstract class BaseElement{
 	}
 
 	public boolean isDisplayed(int timeOutInSeconds) {
-		boolean isDisplayed = false;
-		if (timeOutInSeconds <= 0) {
-			LOG.severe("The time out is invalid. It must greater than 0");
-			return isDisplayed;
-		}
-		Stopwatch sw = Stopwatch.createStarted();
 		try {
-			LOG.info(String.format("Check if the control %s is displayed with timeOut %s", getLocator().toString(),
-					timeOutInSeconds));
-			isDisplayed = getElement().isDisplayed();
-		} catch (StaleElementReferenceException e) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOutInSeconds) {
-				LOG.warning(String.format("Try to check if the control the control %s is displayed again",
-						getLocator().toString()));
-				return isDisplayed(timeOutInSeconds - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			LOG.severe(String.format("Cannot Check isDisplayed on control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+			waitForClickable(timeOutInSeconds);
+			//waitForPresent(timeOutInSeconds);
+			return isDisplayed(timeOutInSeconds);
+		} catch (Exception e) {
+			return false;
 		}
-		return isDisplayed;
+		//boolean isDisplayed = false;
+		/*
+		 * if (timeOutInSeconds <= 0) {
+		 * LOG.severe("The time out is invalid. It must greater than 0"); return
+		 * isDisplayed; }
+		 */
+		/*
+		 * Stopwatch sw = Stopwatch.createStarted(); try {
+		 * LOG.info(String.format("Check if the control %s is displayed with timeOut %s"
+		 * , getLocator().toString(), timeOutInSeconds)); isDisplayed =
+		 * getElement().isDisplayed(); } catch (StaleElementReferenceException e) { if
+		 * (sw.elapsed(TimeUnit.SECONDS) < (long) timeOutInSeconds) {
+		 * LOG.warning(String.
+		 * format("Try to check if the control the control %s is displayed again",
+		 * getLocator().toString())); return isDisplayed(timeOutInSeconds - (int)
+		 * sw.elapsed(TimeUnit.SECONDS)); } } catch (Exception error) {
+		 * LOG.severe(String.format("Cannot Check isDisplayed on control '%s': %s",
+		 * getLocator().toString(), error.getMessage())); throw error; }
+		 */
 	}
 
 	public boolean isDisplayed() {
