@@ -2,12 +2,9 @@ package com.logigear.testfw.common;
 
 import java.util.Map;
 
-import com.logigear.test.ta_dashboard.pom.LoginPage;
 import com.logigear.testfw.conf.Locator;
 import com.logigear.testfw.conf.LocatorLoader;
-import com.logigear.testfw.conf.TestEnvironmentConfig;
 import com.logigear.testfw.driver.BaseDriver;
-import com.logigear.testfw.driver.DriverManager;
 
 /**
  * 
@@ -17,7 +14,9 @@ import com.logigear.testfw.driver.DriverManager;
 public abstract class BasePOM {
 	
 	protected BaseDriver webDriver = TestExecutor.getInstance().getCurrentDriver();
+	
 	private Map<String, Locator> locators = null;
+	
 	
 	public BasePOM(Class<?> derivedClass)
 	{
@@ -35,31 +34,4 @@ public abstract class BasePOM {
 	}
 	
 	public abstract void initPageElements();
-	
-	public String getMessageOnChromePopup() {
-		waitChromePopupAppears();
-		return webDriver.switchTo().alert().getText();
-	}
-	
-	public void waitChromePopupAppears() {
-		try {
-			//logger.printMessage("wait for Chrome Popup Appears");
-			int timeWait = 0;
-			do {
-				
-				webDriver.getWindowHandles();
-				Thread.sleep(1000);
-				timeWait++;
-				if (timeWait > 10) {
-					break;
-				}
-			} while (webDriver.getWindowHandles().size() == 0);
-		} catch (Exception e) {
-			try {
-				throw e;
-			} catch (Exception error) {
-				error.printStackTrace();
-			}
-		}
-	}
 }

@@ -1,10 +1,9 @@
 package com.logigear.test.ta_dashboard.pom;
 
-import com.logigear.testfw.common.BasePOM;
 import com.logigear.testfw.common.Common;
 import com.logigear.testfw.element.Element;
 
-public class LoginPage extends BasePOM{
+public class LoginPage extends GeneralPage{
 
 	// Elements
 	protected Element cbbRepo;
@@ -34,9 +33,9 @@ public class LoginPage extends BasePOM{
 	 * @param repo
 	 * @return
 	 */
-	public HomePage login(String username, String password, String repo) {
-		//cbbRepo.waitForClickable();
-		//cbbRepo.selectByValue(repo);
+	public void login(String username, String password, String repo) {
+		cbbRepo.waitForClickable();
+		cbbRepo.selectByValue(repo);
 		
 		txtUsername.waitForClickable();
 		txtUsername.enter(username);
@@ -46,27 +45,18 @@ public class LoginPage extends BasePOM{
 		
 		btnLogin.waitForClickable();
 		btnLogin.click();
-		
-		return new HomePage().waitForPageDisplay();
 	}
 	
 	public LoginPage loginFailed(String username, String password, String repo) {
-		//cbbRepo.waitForClickable();
-		//cbbRepo.selectByValue(repo);
-		
-		txtUsername.waitForClickable();
-		txtUsername.enter(username);
-		
-		txtPassword.waitForClickable();
-		txtPassword.enter(password);
-		
-		btnLogin.waitForClickable();
-		btnLogin.click();
-		
+		login(username, password, repo);
 		return this;
 	}
 	
-
+	public HomePage loginSuccessfully(String username, String password, String repo) {
+		login(username, password, repo);
+		return new HomePage().waitForPageDisplay();
+	}
+	
 	/**
 	 * 
 	 * @param timeOutInSeconds
@@ -81,6 +71,7 @@ public class LoginPage extends BasePOM{
 	 * 
 	 * @return
 	 */
+	
 	public LoginPage waitForLoading() 
 	{
 		waitForLoading(Common.ELEMENT_TIMEOUT);

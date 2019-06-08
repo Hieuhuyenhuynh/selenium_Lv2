@@ -7,12 +7,12 @@ import com.logigear.test.ta_dashboard.pom.HomePage;
 import com.logigear.test.ta_dashboard.pom.LoginPage;
 import com.logigear.testfw.common.BaseTest;
 
-public class DA_LOGIN_TC001 extends BaseTest{
+public class DA_LOGIN_TC004 extends BaseTest{
 
 	@Test
-	public void TC001() {
+	public void TC004() {
 		System.out.println(
-				"TC001 - Verify that user can login specific repository successfully via Dashboard login page with correct credentials");
+				"TC004 - Verify that user is able to log in different repositories successfully after logging out current repository");
 		
 		String USERNAME = "administrator";
 		String PASSWORD = "";
@@ -20,9 +20,14 @@ public class DA_LOGIN_TC001 extends BaseTest{
 		
 		LoginPage loginpage = new LoginPage();
 		HomePage homePage = loginpage.loginSuccessfully(USERNAME, PASSWORD, SAMPLE_REPO);
+		homePage.selectItemFromTopMenu("administrator", "Logout");
 
+		SAMPLE_REPO = "TestRepository";
+		loginpage.loginSuccessfully(USERNAME, PASSWORD, SAMPLE_REPO);
+		
+		
 		String actualMsg = homePage.getRepoName();
-		String expectedMsg = "SampleRepository";
-		Assert.assertEquals(actualMsg, expectedMsg, "Can't login with correct credentials");
+		String expectedMsg = "TestRepository";
+		Assert.assertEquals(actualMsg, expectedMsg, "Can login with correct credentials");
 	}
 }

@@ -7,14 +7,14 @@ import com.logigear.test.ta_dashboard.pom.HomePage;
 import com.logigear.test.ta_dashboard.pom.LoginPage;
 import com.logigear.testfw.common.BaseTest;
 
-public class DA_LOGIN_TC002 extends BaseTest{
+public class DA_LOGIN_TC003 extends BaseTest{
 
 	@Test
-	public void TC002() {
+	public void TC003() {
 		System.out.println(
-				"TC002 - Verify that user fails to login specific repository successfully via Dashboard login page with incorrect credentials");
+				"TC003 - Verify that user fails to log in specific repository successfully via Dashboard login page with correct username and incorrect password");
 		
-		String USERNAME = "abc";
+		String USERNAME = "administrator";
 		String PASSWORD = "abc";
 		String SAMPLE_REPO = "SampleRepository";
 		

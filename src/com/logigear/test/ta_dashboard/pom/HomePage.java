@@ -1,12 +1,12 @@
 package com.logigear.test.ta_dashboard.pom;
 
-import com.logigear.testfw.common.BasePOM;
 import com.logigear.testfw.element.Element;
 
-public class HomePage extends BasePOM {
+public class HomePage extends GeneralPage {
 	
 	// Elements
 	protected Element txtRepoName;
+	protected Element btnLogout;
 	
 	public HomePage()
 	{

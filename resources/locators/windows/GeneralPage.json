@@ -1,0 +1,12 @@
+{
+	"default": {
+		"strMenu": {
+			"type": "xpath",
+			"value": "//a[text()='%s']"
+		},
+		"strItem": {
+			"type": "xpath",
+			"value": "//a[text()='%s']"
+		}
+	}
+}
