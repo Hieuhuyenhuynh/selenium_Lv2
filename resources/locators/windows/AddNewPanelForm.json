@@ -1,0 +1,28 @@
+{
+	"default": {
+		"txtDisplayName": {
+			"type": "xpath",
+			"value": "//input[@id='txtDisplayName']"
+		},
+		"cbbSeries": {
+			"type": "xpath",
+			"value": "//select[@id='cbbSeriesField']"
+		},
+		"itemSeries": {
+			"type": "xpath",
+			"value": "//select[@id='cbbSeriesField']//optgroup//option[@value='%s']"
+		},
+		"btn": {
+			"type": "xpath",
+			"value": "//input[@id='%s']"
+		},
+		"cbbChartType": {
+			"type": "xpath",
+			"value": "//select[@id='cbbChartType']"
+		},
+		"itemChartType": {
+			"type": "xpath",
+			"value": "//select[@id='cbbChartType']//option[text()='%s']"
+		}
+	}
+}

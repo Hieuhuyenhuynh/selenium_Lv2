@@ -4,7 +4,7 @@
 	<test name="FirstTest">
 		<parameter name="environment" value="windows-chrome" />
 		<classes>
-			<class name="com.logigear.test.ta_dashboard.testcases.mainpage.DA_MP_TC011" />
+			<class name="com.logigear.test.ta_dashboard.testcases.panel.DA_PANEL_TC063" />
 		</classes>
 	</test>
 </suite>

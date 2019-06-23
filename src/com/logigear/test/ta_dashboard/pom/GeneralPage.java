@@ -23,6 +23,11 @@ public class GeneralPage extends BasePOM{
 		return webDriver.switchTo().alert().getText();
 	}
 	
+	public void comfirmChromePopup() {
+		waitChromePopupAppears();
+		webDriver.switchTo().alert().accept();
+	}
+	
 	public void waitChromePopupAppears() {
 		try {
 			//logger.printMessage("wait for Chrome Popup Appears");
